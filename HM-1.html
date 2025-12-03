@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>  HM-1</title>
+  <style>
+    :root{--bg:#fff;--accent:#0b6efd}
+    body{font-family:Segoe UI,Arial;background:linear-gradient(120deg,#eef6ff 0%,#fff 100%);padding:30px;direction:rtl}
+    .box{max-width:720px;margin:auto;background:var(--bg);padding:20px;border-radius:12px;box-shadow:0 8px 30px rgba(11,20,40,.06)}
+    h2{margin:0 0 10px 0}
+    .list{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(11,110,253,.12)}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>تفاعل بسيط</h2>
+    <div>
+      <input id="txt" placeholder="اكتب هنا" />
+      <button id="btn">عرض</button>
+    </div>
+    <div class="list" id="out"></div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn'), txt = document.getElementById('txt'), out = document.getElementById('out');
+    btn.onclick = ()=>{
+      const v = (txt.value || 'لا شيء').trim();
+      const span = document.createElement('span');
+      span.className = 'chip';
+      span.textContent = `أدخلت: ${v}`;
+      out.prepend(span);
+      if (out.children.length>6) out.removeChild(out.lastChild);
+    };
+  </script>
+</body>
+</html>
